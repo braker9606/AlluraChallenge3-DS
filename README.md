@@ -4,29 +4,41 @@ https://colab.research.google.com/github/Linth84/EdVillalbaTelecomXParte2/blob/m
 
 # 📊 Telecom X – Predicción de Evasión de Clientes (Churn)
 
-**Autor:** Alberto Edgardo Villalba  
-**Challenge:** Telecom X Parte 2 – Alura (Data Science / Machine Learning)
+**Autor:** Armando Rene Cartagena Muñoz  
+**Challenge:** Telecom X Parte 2 
+**Programa:** Especialización en Data Science
 
 ---
 
-## 🧠 Introducción
+## 🧠 Descripción del proyecto
 
-Este proyecto corresponde a la **Parte 2 del Challenge Telecom X**, en la cual se desarrolla un **modelo predictivo de Machine Learning** para anticipar la evasión de clientes (*churn*) en Telecom X.
+Este proyecto corresponde a la segunda fase del análisis de Telecom X, en la cual se desarrolla un modelo predictivo de Machine Learning orientado a anticipar la evasión de clientes (churn).
 
-A partir del conjunto de datos previamente analizado y tratado en la Parte 1, el objetivo de este trabajo es construir un pipeline de modelado que permita identificar clientes con mayor probabilidad de cancelar el servicio, facilitando la toma de decisiones estratégicas orientadas a la retención.
+A partir del conjunto de datos previamente depurado y analizado en la fase exploratoria, se construye un pipeline de modelado que permite estimar la probabilidad de cancelación del servicio.
 
-El enfoque combina preparación de datos, entrenamiento de modelos de clasificación, evaluación con métricas adecuadas e interpretación de resultados con una perspectiva de negocio.
+El enfoque combina preprocesamiento estructurado, entrenamiento de modelos supervisados, evaluación con métricas apropiadas e interpretación de resultados desde una perspectiva de negocio.
 
 ---
 
 ## 🎯 Objetivos del proyecto
 
-- Preparar los datos para su uso en modelos de Machine Learning.
-- Analizar el balance de clases y su impacto en el modelado.
+### Objetivo general
+
+- Construir y evaluar modelos de clasificación capaces de predecir la evasión de clientes en Telecom X.
+
+### Objetivos específicos
+
+- Preparar los datos para su utilización en algoritmos de Machine Learning.
+
+- Analizar el balance de clases y su impacto en el desempeño del modelo.
+
 - Entrenar y comparar distintos modelos de clasificación.
-- Evaluar el desempeño mediante métricas apropiadas para problemas de churn.
-- Interpretar la importancia de las variables más relevantes.
-- Generar conclusiones y recomendaciones estratégicas basadas en los resultados.
+
+- Evaluar el desempeño utilizando métricas adecuadas para problemas de churn.
+
+- Interpretar la relevancia de las variables predictoras.
+
+- Generar recomendaciones estratégicas basadas en los resultados obtenidos.
 
 ---
 
@@ -34,54 +46,72 @@ El enfoque combina preparación de datos, entrenamiento de modelos de clasificac
 
 En esta etapa se realizaron las siguientes tareas:
 
-- Carga del archivo tratado en la Parte 1 del proyecto.
-- Eliminación de columnas irrelevantes para el modelado (identificadores).
-- Codificación de variables categóricas mediante **One-Hot Encoding**.
-- Separación de variables numéricas y categóricas utilizando `ColumnTransformer`.
-- Análisis de la proporción de churn para detectar desbalance de clases.
-- Normalización aplicada únicamente a los modelos sensibles a la escala.
+- Las principales etapas de preprocesamiento incluyeron:
 
+- Carga del dataset tratado en la fase anterior.
+
+- Eliminación de variables irrelevantes (identificadores).
+
+- Codificación de variables categóricas mediante One-Hot Encoding.
+
+- Separación de variables numéricas y categóricas utilizando 'ColumnTransformer'.
+
+- Evaluación del desbalance de clases.
+
+- Aplicación de normalización únicamente en modelos sensibles a la escala.
+
+- Este enfoque permitió estructurar un flujo de transformación coherente y reproducible.
 ---
 
 ## 🤖 Modelado y evaluación
 
-Se entrenaron y evaluaron los siguientes modelos:
+Se entrenaron y compararon los siguientes modelos:
 
-- **Baseline (DummyClassifier):** utilizado como referencia para evaluar el valor agregado de los modelos predictivos.
-- **Árbol de Decisión:** modelo no sensible a la escala, con buena interpretabilidad.
-- **Regresión Logística:** modelo sensible a la escala, seleccionado como modelo final por su desempeño y capacidad explicativa.
+DummyClassifier (Baseline): modelo de referencia para establecer un punto mínimo de comparación.
 
-La evaluación se realizó utilizando:
+Árbol de Decisión: modelo interpretable y no sensible a la escala.
+
+Regresión Logística: modelo lineal sensible a la escala, seleccionado como modelo final por su equilibrio entre desempeño e interpretabilidad.
+
+## 📊 Métricas utilizadas
 
 - Accuracy
-- Precision
-- Recall
-- F1-score
-- Matrices de confusión (valores absolutos y normalizados)
 
-Se priorizaron métricas como **Recall** y **F1-score**, considerando el desbalance moderado de clases y la importancia de detectar clientes con riesgo de evasión.
+- Precision
+
+- Recall
+
+- F1-score
+
+- Matriz de confusión (valores absolutos y normalizados)
+
+- Dado el carácter estratégico del problema, se priorizaron métricas como Recall y F1-score, considerando la importancia de detectar clientes con riesgo de evasión.
 
 ---
 
 ## 📈 Importancia de las variables
 
-A partir del modelo seleccionado (Regresión Logística), se analizó la contribución de las variables al proceso de predicción.
+A partir del modelo de Regresión Logística se analizó la contribución de las variables al proceso predictivo.
 
-Los resultados indican que la evasión de clientes está principalmente asociada a:
+Principales hallazgos:
 
-- Baja antigüedad del cliente.
-- Contratos de corto plazo.
-- Determinadas configuraciones de servicios y cargos.
+- Baja antigüedad incrementa la probabilidad de churn.
 
-Por el contrario, una mayor permanencia y contratos de mayor duración actúan como factores protectores frente al churn.
+- Contratos de corto plazo presentan mayor riesgo.
+
+- Determinadas configuraciones de servicios y niveles de cargos influyen en la decisión de cancelación.
+
+- La permanencia prolongada y contratos de mayor duración actúan como factores protectores.
 
 ---
 
 ## 📌 Conclusiones
 
-El modelo de **Regresión Logística** presentó el mejor desempeño general, logrando un equilibrio adecuado entre precisión y capacidad de detección de clientes que cancelan.
+El modelo de Regresión Logística mostró el mejor desempeño general, logrando un equilibrio adecuado entre precisión y capacidad de detección.
 
-El análisis confirma que la evasión de clientes no depende de un único factor, sino de la combinación de variables contractuales, económicas y de relación con el servicio. La utilización de modelos predictivos permite anticipar comportamientos de riesgo y orientar acciones preventivas basadas en datos.
+El análisis confirma que la evasión no depende de un único factor, sino de la interacción entre variables contractuales, económicas y de comportamiento del cliente.
+
+La implementación de modelos predictivos permite anticipar clientes en riesgo y diseñar estrategias de retención basadas en datos.
 
 ---
 
@@ -105,7 +135,3 @@ El análisis confirma que la evasión de clientes no depende de un único factor
 - Google Colab  
 
 ---
-
-## 📘 Nota final
-
-Este proyecto forma parte del **Challenge Telecom X Parte 2 del programa de formación de Alura** y fue desarrollado con fines educativos y analíticos, aplicando técnicas de Data Science y Machine Learning a un caso de negocio realista.
